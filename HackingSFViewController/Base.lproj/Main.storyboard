@@ -14,7 +14,7 @@
                         <animations/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Dvq-l5-BAg"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="D2K-8X-b1M"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i69-gL-iTh" userLabel="First Responder" sceneMemberID="firstResponder"/>

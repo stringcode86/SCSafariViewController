@@ -16,8 +16,7 @@ class SCSafariViewController: SFSafariViewController {
                 _edgeView = UIView()
                 _edgeView?.translatesAutoresizingMaskIntoConstraints = false
                 view.addSubview(_edgeView!)
-                _edgeView?.backgroundColor = UIColor(white: 1.0, alpha: 1)
-                _edgeView?.backgroundColor = UIColor.redColor()
+                _edgeView?.backgroundColor = UIColor(white: 1.0, alpha: 0.005)
                 let bindings = ["edgeView": _edgeView!]
                 let options = NSLayoutFormatOptions(rawValue: 0)
                 let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("|-0-[edgeView(5)]", options: options, metrics: nil, views: bindings)

@@ -11,7 +11,7 @@ import SafariServices
 
 class ViewController: UIViewController, SFSafariViewControllerDelegate, UIViewControllerTransitioningDelegate {
 
-    let animator = SCPopAnimator()
+    let animator = SCModalPushPopAnimator()
     
     @IBAction func showSafariViewController(sender: AnyObject){
         let safariViewController = SCSafariViewController(URL: NSURL(string: "http://www.theverge.com")!)
@@ -29,7 +29,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, UIViewCo
         let percentComplete = recognizer.locationInView(view).x / view.bounds.size.width / 2.0
         switch recognizer.state {
         case .Began: dismissViewControllerAnimated(true, completion: nil)
-        case .Changed: animator.updateInteractiveTransition(percentComplete)
+        case .Changed: animator.updateInteractiveTransition(percentComplete > 0.99 ? 0.99 : percentComplete)
         case .Ended, .Cancelled:
             (recognizer.velocityInView(view).x < 0) ? animator.cancelInteractiveTransition() : animator.finishInteractiveTransition()
             self.animator.percentageDriven = false
