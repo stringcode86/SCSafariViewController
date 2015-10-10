@@ -12,6 +12,8 @@
 		9FFF46C71BC922ED001451EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FFF46C51BC922ED001451EE /* Main.storyboard */; };
 		9FFF46C91BC922ED001451EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FFF46C81BC922ED001451EE /* Assets.xcassets */; };
 		9FFF46CC1BC922ED001451EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FFF46CA1BC922ED001451EE /* LaunchScreen.storyboard */; };
+		9FFF46D41BC938A9001451EE /* SCSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF46D31BC938A9001451EE /* SCSafariViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		9FFF46D71BC956A6001451EE /* SCPopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF46D61BC956A6001451EE /* SCPopAnimator.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		9FFF46C81BC922ED001451EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9FFF46CB1BC922ED001451EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9FFF46CD1BC922ED001451EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FFF46D31BC938A9001451EE /* SCSafariViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSafariViewController.swift; sourceTree = "<group>"; };
+		9FFF46D61BC956A6001451EE /* SCPopAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPopAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				9FFF46C11BC922ED001451EE /* AppDelegate.swift */,
 				9FFF46C31BC922ED001451EE /* ViewController.swift */,
+				9FFF46D61BC956A6001451EE /* SCPopAnimator.swift */,
+				9FFF46D31BC938A9001451EE /* SCSafariViewController.swift */,
 				9FFF46C51BC922ED001451EE /* Main.storyboard */,
 				9FFF46C81BC922ED001451EE /* Assets.xcassets */,
 				9FFF46CA1BC922ED001451EE /* LaunchScreen.storyboard */,
@@ -135,6 +141,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FFF46C41BC922ED001451EE /* ViewController.swift in Sources */,
+				9FFF46D41BC938A9001451EE /* SCSafariViewController.swift in Sources */,
+				9FFF46D71BC956A6001451EE /* SCPopAnimator.swift in Sources */,
 				9FFF46C21BC922ED001451EE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
