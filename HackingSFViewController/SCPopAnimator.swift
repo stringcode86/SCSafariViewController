@@ -10,6 +10,7 @@ import UIKit
 
 class SCPopAnimator: UIPercentDrivenInteractiveTransition, UIViewControllerAnimatedTransitioning {
     
+    var dismissing = false
     var percentageDriven: Bool = false
     
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
@@ -17,16 +18,22 @@ class SCPopAnimator: UIPercentDrivenInteractiveTransition, UIViewControllerAnima
     }
 
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)
-        let toView = transitionContext.viewForKey(UITransitionContextToViewKey)
+        let fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
+        let toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         
-        transitionContext.containerView()!.insertSubview(toView!, belowSubview: fromViewController!.view)
+        let view = dismissing ? fromViewController.view : toViewController.view
+        let offset = UIScreen.mainScreen().bounds.size.width
         
-    
+        transitionContext.containerView()?.insertSubview(toViewController.view, aboveSubview: fromViewController.view)
+        if dismissing { transitionContext.containerView()?.insertSubview(toViewController.view, belowSubview: fromViewController.view) }
+        
+        view.frame = fromViewController.view.frame
+        view.transform = dismissing ? CGAffineTransformIdentity : CGAffineTransformMakeTranslation(offset, 0)
+        
         UIView.animateWithDuration(transitionDuration(transitionContext), delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 1.0, options: SCPopAnimator.animOpts(), animations: { () -> Void in
-                fromViewController?.view.transform = CGAffineTransformMakeTranslation(UIScreen.mainScreen().bounds.size.width, 0)
+                view.transform = self.dismissing ? CGAffineTransformMakeTranslation(offset, 0) : CGAffineTransformIdentity
             }) { (finished ) -> Void in
-                fromViewController?.view.transform = CGAffineTransformIdentity
+                view.transform = CGAffineTransformIdentity
                 transitionContext.completeTransition(finished)
         }
     }

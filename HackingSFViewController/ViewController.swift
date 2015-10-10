@@ -11,11 +11,10 @@ import SafariServices
 
 class ViewController: UIViewController, SFSafariViewControllerDelegate, UIViewControllerTransitioningDelegate {
 
-    var animator: SCPopAnimator? = SCPopAnimator()
+    let animator = SCPopAnimator()
     
     @IBAction func showSafariViewController(sender: AnyObject){
-        let url = NSURL(string: "http://www.theverge.com")
-        let safariViewController = SCSafariViewController(URL: url!)
+        let safariViewController = SCSafariViewController(URL: NSURL(string: "http://www.theverge.com")!)
         safariViewController.delegate = self;
         safariViewController.transitioningDelegate = self
         self.presentViewController(safariViewController, animated: true) { () -> Void in
@@ -26,14 +25,14 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, UIViewCo
     }
     
     func handleGesture(recognizer:UIScreenEdgePanGestureRecognizer) {
-        self.animator?.percentageDriven = true
+        self.animator.percentageDriven = true
         let percentComplete = recognizer.locationInView(view).x / view.bounds.size.width / 2.0
         switch recognizer.state {
         case .Began: dismissViewControllerAnimated(true, completion: nil)
-        case .Changed: animator?.updateInteractiveTransition(percentComplete)
+        case .Changed: animator.updateInteractiveTransition(percentComplete)
         case .Ended, .Cancelled:
-            (recognizer.velocityInView(view).x < 0) ? animator?.cancelInteractiveTransition() : animator?.finishInteractiveTransition()
-            self.animator?.percentageDriven = false
+            (recognizer.velocityInView(view).x < 0) ? animator.cancelInteractiveTransition() : animator.finishInteractiveTransition()
+            self.animator.percentageDriven = false
         default: ()
         }
     }
@@ -42,15 +41,18 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, UIViewCo
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        animator.dismissing = false
+        return animator
+    }
+    
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        animator.dismissing = true
         return animator
     }
     
     func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        if let _animator = self.animator {
-            return _animator.percentageDriven ? _animator : nil
-        }
-        return nil
+        return self.animator.percentageDriven ? self.animator : nil
     }
 }
 
