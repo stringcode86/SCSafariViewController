@@ -12,14 +12,12 @@ class SCModalPushPopAnimator: UIPercentDrivenInteractiveTransition, UIViewContro
     
     var dismissing = false
     var percentageDriven: Bool = false
-    weak var context: UIViewControllerContextTransitioning?
     
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.75
     }
 
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        context = transitionContext
         let fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
         let toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         
