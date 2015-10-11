@@ -14,7 +14,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, UIViewCo
     let animator = SCModalPushPopAnimator()
     
     @IBAction func showSafariViewController(sender: AnyObject){
-        let safariViewController = SCSafariViewController(URL: NSURL(string: "http://www.theverge.com")!)
+        let safariViewController = SCSafariViewController(URL: NSURL(string: "http://www.stringcode.co.uk")!)
         safariViewController.delegate = self;
         safariViewController.transitioningDelegate = self
         self.presentViewController(safariViewController, animated: true) { () -> Void in
@@ -54,5 +54,6 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, UIViewCo
     func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return self.animator.percentageDriven ? self.animator : nil
     }
+    
 }
 
